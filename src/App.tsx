@@ -1,9 +1,23 @@
-import { useState } from 'react'
+import liff from '@line/liff'
 import logo from './logo.svg'
 import './App.css'
+import '../styles/index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const handleClickCapture = () => {
+    liff.$SS.capture('blob')
+    .then((result: any) => {
+      console.log(result)
+    })
+  }
+
+  const handleClickShowModal = () => {
+    liff.$SS.showModal()
+    .then((result: any) => {
+      console.log(result)
+    })
+  }
 
   return (
     <div className="App">
@@ -11,31 +25,12 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
+          <button type="button" onClick={handleClickCapture}>
+            Capture
           </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
+          <button type="button" onClick={handleClickShowModal}>
+            Show Modal
+          </button>
         </p>
       </header>
     </div>
