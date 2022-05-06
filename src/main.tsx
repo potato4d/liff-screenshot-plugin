@@ -7,7 +7,7 @@ import LIFFScreenShotPlugin from './plugin'
 liff.use(LIFFScreenShotPlugin)
 
 liff.init({
-  liffId: `${process.env.TEST_LIFF_ID}`,
+  liffId: `${import.meta.env.VITE_TEST_LIFF_ID}`,
 })
 .then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
