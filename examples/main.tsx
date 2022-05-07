@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import liff from '@line/liff'
-import LIFFScreenShotPlugin from './plugin'
+import LIFFScreenShotPlugin from '../src/plugin'
 
 liff.use(LIFFScreenShotPlugin)
 
