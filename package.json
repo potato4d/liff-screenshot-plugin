@@ -1,6 +1,7 @@
 {
   "name": "liff-screenshot-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "main": "./dist/index.es.js",
   "scripts": {
     "dev": "vite --config vite.config.example.ts",
     "build": "tsc && vite build",
