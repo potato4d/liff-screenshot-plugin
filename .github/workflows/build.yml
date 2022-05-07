@@ -13,3 +13,4 @@ jobs:
           node-version: 14
       - run: yarn
       - run: yarn build
+      - run: yarn terser ./dist/index.es.js --compress ecma=2020 --mangle -o ./dist/index.es.min.js
