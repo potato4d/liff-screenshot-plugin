@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import preact from '@preact/preset-vite'
 import * as path from 'path'
 
 // https://vitejs.dev/config/
@@ -11,15 +11,13 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', '@line/liff'],
+      external: ['@line/liff'],
       output: {
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
           '@line/liff': 'liff',
         }
       }
     }
   },
-  plugins: [react()],
+  plugins: [preact()],
 })

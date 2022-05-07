@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom/client'
+import { render } from 'preact'
 import App from './App'
 import './index.css'
 import '../styles/index.css'
@@ -11,8 +11,9 @@ liff.init({
   liffId: `${import.meta.env.VITE_TEST_LIFF_ID}`,
 })
 .then(() => {
-  ReactDOM.createRoot(document.getElementById('root')!).render(
-    <App />
+  render(
+    <App />,
+    document.getElementById('root')!
   )
 })
 

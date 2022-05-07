@@ -1,8 +1,8 @@
-import ReactDOM from 'react-dom/client'
+import { render } from 'preact'
 import { toBlob } from 'html-to-image'
 import { ReportModal } from '../components/ReportModal'
 import * as constants from '../utils/constants'
-import { PluginState, ShowModalOptions, SupportFormat } from '../types/types'
+import { PluginState, ShowModalOptions, SupportFormat } from '../types'
 
 const pluginState: PluginState = {
   modal: {
@@ -31,9 +31,9 @@ const LIFFScreenShotPlugin = {
       modalRoot.id = constants.MODAL_ROOT_ID
       ;(modalRoot as any).style = 'width: 100%; height: 100%;z-index: 500000;position: fixed;left:0;top:0'
       document.body.append(modalRoot)
-      pluginState.modal.reactRoot = ReactDOM.createRoot(document.getElementById(constants.MODAL_ROOT_ID)!)
-      pluginState.modal.reactRoot.render(
-        <ReportModal dicionary={opt.dictionary || {}} format={format} callback={callback} />
+      render(
+        <ReportModal dicionary={opt.dictionary || {}} format={format} callback={callback} />,
+        document.getElementById(constants.MODAL_ROOT_ID)!
       )
     })
   },

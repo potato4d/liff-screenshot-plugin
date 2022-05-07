@@ -1,6 +1,7 @@
 import liff from '@line/liff'
-import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
-import { SupportFormat, TextDictionary } from '../types/types'
+import { ComponentChildren } from 'preact'
+import React, { useCallback, useEffect, useRef, useState } from 'preact/compat'
+import { SupportFormat, TextDictionary } from '../types'
 
 const defaultTextDictionary: TextDictionary = {
   title: 'フィードバックを送信',
@@ -70,7 +71,7 @@ export const ReportModal: React.FC<{ format: SupportFormat, dicionary?: Partial<
   )
 }
 
-const Button: React.FC<{ children: ReactNode, theme: string, onClick?: () => void }> = ({ theme, children, onClick }) => {
+const Button: React.FC<{ children: ComponentChildren, theme: string, onClick?: () => void }> = ({ theme, children, onClick }) => {
   return (
     <button type="button" onClick={onClick} className="liff-modal-plugin_button" style={{
       background: theme === 'cancel' ? '#fff' : '#19B602',
@@ -79,7 +80,7 @@ const Button: React.FC<{ children: ReactNode, theme: string, onClick?: () => voi
   )
 }
 
-const ModalHeading: React.FC<{ children: ReactNode }> = ({ children }) => (
+const ModalHeading: React.FC<{ children: ComponentChildren }> = ({ children }) => (
   <h2 id="liff-modal-plugin_heading">
     {children}
   </h2>
