@@ -16,7 +16,7 @@ export const ReportModal: React.FC<{ format: SupportFormat, dicionary?: Partial<
   const textDictionary = {...defaultTextDictionary, ...(dicionary || {})} as const
 
   useEffect(() => {
-    liff.$SS.capture('blob')
+    liff.$SS.capture()
     .then((blob: Blob) => {
       const url = URL.createObjectURL(blob)
       setPreviewBlob(blob)

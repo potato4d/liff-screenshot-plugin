@@ -22,10 +22,10 @@ export type ShowModalOptions = {
 }
 
 export type SupportFormat = 'png' | 'blob'
-type CaptureReturn<T> = T extends 'png' ? string : T extends 'blob' ? Blob : Blob;
+// export type CaptureReturn<T> = T extends 'png' ? string : T extends 'blob' ? Blob : never;
 
 type SSPlugin = {
-  capture: <T extends SupportFormat>(format: T) => Promise<CaptureReturn<T>>
+  capture: () => Promise<Blob>
   showModal: <T extends SupportFormat>(format?: T, option?: ShowModalOptions) => Promise<CaptureReturn<T>>
   hideModal: () => Promise<void>
 }

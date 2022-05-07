@@ -6,7 +6,7 @@ const App: React.FC = () => {
   const [urlList, setUrlList] = useState<string[]>([]);
 
   const handleClickCapture = () => {
-    liff.$SS.capture('blob')
+    liff.$SS.capture()
     .then((result) => {
       setUrlList((prev) => [...prev, URL.createObjectURL(result)])
     })
