@@ -1,5 +1,8 @@
 # LIFF ScreenShot Plugin
 
+[![npm version](https://badge.fury.io/js/liff-screenshot-plugin.svg)](https://badge.fury.io/js/liff-screenshot-plugin) ![master](https://github.com/potato4d/liff-screenshot-plugin/actions/workflows/build.yml/badge.svg?branch=master)
+
+
 > ScreenShot plugin for LIFF
 
 ## Installation
