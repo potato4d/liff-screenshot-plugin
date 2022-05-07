@@ -1,54 +1,62 @@
-import liff from '@line/liff'
-import { useState } from 'preact/compat'
-import logo from './logo.svg'
-import { initializeApp } from 'firebase/app'
+import liff from "@line/liff";
+import { useState } from "preact/compat";
+import logo from "./logo.svg";
+import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 
-initializeApp({
-  storageBucket: `${process.env.VITE_BUCKET_NAME}`
-})
+initializeApp({ storageBucket: `${import.meta.env.VITE_BUCKET_NAME}` });
 const storage = getStorage();
 
 const App: React.FC = () => {
   const [urlList, setUrlList] = useState<string[]>([]);
 
   const handleClickCapture = () => {
-    liff.$SS.capture()
-    .then((result) => {
-      setUrlList((prev) => [...prev, URL.createObjectURL(result)])
-      const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`
-      const ssRef = ref(storage, `ss/${name}`);
-      uploadBytes(ssRef, result)
-    })
-  }
+    liff.$SS
+      .capture()
+      .then((result) => {
+        setUrlList((prev) => [...prev, URL.createObjectURL(result)]);
+        const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`;
+        const ssRef = ref(storage, `ss/${name}`);
+        uploadBytes(ssRef, result);
+      });
+  };
 
-  const handleClickShowModal = () => {
-    liff.$SS.showModal('blob')
-    .then((result) => {
-      setUrlList((prev) => [...prev, URL.createObjectURL(result)])
-      const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`
-      const ssRef = ref(storage, `ss/${name}`);
-      uploadBytes(ssRef, result)
-    })
-  }
+  const handleClickcaptureWithModal = () => {
+    liff.$SS
+      .captureWithModal("blob")
+      .then(
+        ({ data }) => {
+          setUrlList((prev) => [...prev, URL.createObjectURL(data)]);
+          const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`;
+          const ssRef = ref(storage, `ss/${name}`);
+          uploadBytes(ssRef, data);
+        },
+      );
+  };
 
   const handleClickShowI18nModal = () => {
-    liff.$SS.showModal('blob', {
-      dictionary: {
-        title: 'Send Feedback',
-        placeholder: 'Please provide details about your feedback.',
-        note: 'The information and screenshots will be used in accordance with our Terms of Service and Privacy Policy.',
-        cancelText: 'CANCEL',
-        submitText: 'SEND'
-      }
-    })
-    .then((result) => {
-      setUrlList((prev) => [...prev, URL.createObjectURL(result)])
-      const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`
-      const ssRef = ref(storage, `ss/${name}`);
-      uploadBytes(ssRef, result)
-    })
-  }
+    liff.$SS
+      .captureWithModal(
+        "blob",
+        {
+          dictionary: {
+            title: "Send Feedback",
+            placeholder: "Please provide details about your feedback.",
+            note: "The information and screenshots will be used in accordance with our Terms of Service and Privacy Policy.",
+            cancelText: "CANCEL",
+            submitText: "SEND",
+          },
+        },
+      )
+      .then(
+        ({ data }) => {
+          setUrlList((prev) => [...prev, URL.createObjectURL(data)]);
+          const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`;
+          const ssRef = ref(storage, `ss/${name}`);
+          uploadBytes(ssRef, data);
+        },
+      );
+  };
 
   return (
     <div className="App">
@@ -59,11 +67,11 @@ const App: React.FC = () => {
             <button type="button" onClick={handleClickCapture}>
               capture
             </button>
-            <button type="button" onClick={handleClickShowModal}>
-              showModal
+            <button type="button" onClick={handleClickcaptureWithModal}>
+              captureWithModal
             </button>
             <button type="button" onClick={handleClickShowI18nModal}>
-              showModal with i18n option
+              captureWithModal(i18n option)
             </button>
           </p>
         </header>
@@ -81,7 +89,7 @@ const App: React.FC = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

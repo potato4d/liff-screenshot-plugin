@@ -2129,6 +2129,36 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@rometools/cli-darwin-arm64@0.5.0-next":
+  version "0.5.0-next"
+  resolved "https://registry.yarnpkg.com/@rometools/cli-darwin-arm64/-/cli-darwin-arm64-0.5.0-next.tgz#886a2786e023740de65f344538e406b72cc38eec"
+  integrity sha512-dzwIOxvSNPD70DJYzyrxs0DLqUd4p+wDJM/AmHKGTxYJSdQahEG5/scnqfwIGiaSpKP/qNIv4+7Hd0aSaQF0NQ==
+
+"@rometools/cli-darwin-x64@0.5.0-next":
+  version "0.5.0-next"
+  resolved "https://registry.yarnpkg.com/@rometools/cli-darwin-x64/-/cli-darwin-x64-0.5.0-next.tgz#625430b7ed420c30883fb8b7e167e3074714728b"
+  integrity sha512-DXb/5PxNvD4ENb0oKiWnV2Zfww+yyZ5Q/ADUQqF1TsQjy8l7+4uiY618Wxo7KfH4y2uJA8b7wnly16bSw44F5g==
+
+"@rometools/cli-linux-arm64@0.5.0-next":
+  version "0.5.0-next"
+  resolved "https://registry.yarnpkg.com/@rometools/cli-linux-arm64/-/cli-linux-arm64-0.5.0-next.tgz#58e0d3c33dd39c7e881550c4e738e0e4a8178bec"
+  integrity sha512-1vWKrnQgBgTBeQZquphsmqdCudX4GuwugaQbQVmpCQa+WfKpAe8SAQIJz5G5G3m9uYQRUfwS2AXXEWuMCVHSZQ==
+
+"@rometools/cli-linux-x64@0.5.0-next":
+  version "0.5.0-next"
+  resolved "https://registry.yarnpkg.com/@rometools/cli-linux-x64/-/cli-linux-x64-0.5.0-next.tgz#6516a916e4fc3c7ad035672845409cae55e18fd9"
+  integrity sha512-rKLhodWhYdMmVtIN1mZFxEFTbTiceat6NJUBGbsLHrjQVZ9h9tw8LlK/Lx8dBpzH5j093xKModnxZDFeIYyHLQ==
+
+"@rometools/cli-win32-arm64@0.5.0-next":
+  version "0.5.0-next"
+  resolved "https://registry.yarnpkg.com/@rometools/cli-win32-arm64/-/cli-win32-arm64-0.5.0-next.tgz#9b702e70f7e953f46fbe701593e85e5135a077cd"
+  integrity sha512-XDVcPeTAvR9KgCqJQYLkhG2cb5XhsY1ZQUKSGsruxB257spkizb2M299VvLaSKVD7pDakG8Vk0JN3lPXdn0zdQ==
+
+"@rometools/cli-win32-x64@0.5.0-next":
+  version "0.5.0-next"
+  resolved "https://registry.yarnpkg.com/@rometools/cli-win32-x64/-/cli-win32-x64-0.5.0-next.tgz#60a7976e774d683345ed3e298afb6c0bf0488ad8"
+  integrity sha512-kZeH17xLyQeAD+Y3vAPFuFnF7RxaCmtN/WSfB4mobje5HsAIqP6YPA7Gxpex/fJhv3rRWyNMTvrZEtDn5ogjHw==
+
 "@tokenizer/token@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@tokenizer/token/-/token-0.1.1.tgz#f0d92c12f87079ddfd1b29f614758b9696bc29e3"
@@ -3113,6 +3143,18 @@ rollup@^2.59.0:
   integrity sha512-EitogNZnfku65I1DD5Mxe8JYRUCy0hkK5X84IlDtUs+O6JRMpRciXTzyCUuX11b5L5pvjH+OmFXiQ3XjabcXgg==
   optionalDependencies:
     fsevents "~2.3.2"
+
+rome@^0.5.0-next:
+  version "0.5.0-next"
+  resolved "https://registry.yarnpkg.com/rome/-/rome-0.5.0-next.tgz#06a84ba5afde8644c1a8694faa842579eb9e2ad2"
+  integrity sha512-Y5LmDdSeu35DrqJRQnNHSmZcL6yOyHUhJLKevZN5xXW4GnPwHMLF8rUahnhgAugD5wmyGYAgakwKWA64n6yxkg==
+  optionalDependencies:
+    "@rometools/cli-darwin-arm64" "0.5.0-next"
+    "@rometools/cli-darwin-x64" "0.5.0-next"
+    "@rometools/cli-linux-arm64" "0.5.0-next"
+    "@rometools/cli-linux-x64" "0.5.0-next"
+    "@rometools/cli-win32-arm64" "0.5.0-next"
+    "@rometools/cli-win32-x64" "0.5.0-next"
 
 safe-buffer@>=5.1.0, safe-buffer@~5.2.0:
   version "5.2.1"

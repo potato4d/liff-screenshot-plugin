@@ -35,7 +35,7 @@ liff.use(LIFFSSPlugin)
 
 ## API
 
-### showModal
+### captureWithModal
 
 ### hideModal
 
