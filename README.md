@@ -6,7 +6,7 @@
 
 > ScreenShot plugin for LIFF
 
-[詳細の紹介はこちら(日本語)](https://d.potato4d.me/entry/20220508-liff-ss-plugin/) | [Concept detail](https://d.potato4d.me/entry/20220508-liff-ss-plugin/)
+[詳細の紹介はこちら(日本語)](https://d.potato4d.me/entry/20220508-liff-ss-plugin/) | [Concept detail](https://github.com/potato4d/liff-screenshot-plugin/blob/master/.github/workflows/CONCEPT.md)
 
 ## Installation
 
