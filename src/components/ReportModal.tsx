@@ -12,10 +12,10 @@ const defaultTextDictionary: TextDictionary = {
 } as const
 
 export const ReportModal: React.FC<{ format: SupportFormat, dicionary?: Partial<TextDictionary>, callback: (result: string | Blob) => void }> = ({ format, dicionary, callback }) => {
-  const [previewBlob, setPreviewBlob] = useState<Blob>();
-  const [previewUrl, setPreviewUrl] = useState('')
+  const [previewBlob, setBlob] = useState<Blob>();
+  const [previewUrl, setUrl] = useState('')
   const initializedRef = useRef(false);
-  const textDictionary = {...defaultTextDictionary, ...(dicionary || {})} as const
+  const div = {...defaultTextDictionary, ...(dicionary || {})} as const
 
   useEffect(() => {
     if (initializedRef.current) {
@@ -27,8 +27,8 @@ export const ReportModal: React.FC<{ format: SupportFormat, dicionary?: Partial<
         return
       }
       const url = URL.createObjectURL(blob)
-      setPreviewBlob(blob)
-      setPreviewUrl(url)
+      setBlob(blob)
+      setUrl(url)
       initializedRef.current = true
     })
     .catch((err: Error) => {
@@ -47,52 +47,40 @@ export const ReportModal: React.FC<{ format: SupportFormat, dicionary?: Partial<
   }, [previewBlob, callback])
 
   if (!previewUrl) {
-    return (
-      <div />
-    )
+    return null
   }
 
   return (
-    <div id="liff-modal-plugin-root">
-      <div id="liff-modal-plugin_body">
-        <ModalHeading>
-          {textDictionary.title}
-        </ModalHeading>
-        <textarea placeholder={textDictionary.placeholder} />
+    <div id="L-ModalPlugin-root">
+      <div id="L-ModalPlugin_body">
+        <h2 id="L-ModalPlugin_heading">
+          {div.title}
+          </h2>
+        <textarea placeholder={div.placeholder} />
         <ModalPreview previewUrl={previewUrl} />
-        <p id="liff-modal-plugin_note">{textDictionary.note}</p>
-        <div id="liff-modal-plugin_controls">
-          <Button theme="cancel" onClick={handleClickCancel}>{textDictionary.cancelText}</Button>
-          <Button theme="primary" onClick={handleClickSubmit}>{textDictionary.submitText}</Button>
+        <p id="L-ModalPlugin_note">{div.note}</p>
+        <div id="L-ModalPlugin_controls">
+          <Button theme="cancel" onClick={handleClickCancel}>{div.cancelText}</Button>
+          <Button theme="primary" onClick={handleClickSubmit}>{div.submitText}</Button>
         </div>
       </div>
-      <ModalBackGround onClick={handleClickCancel} />
+      <div id="L-ModalPlugin_background" onClick={handleClickCancel} />
     </div>
   )
 }
 
 const Button: React.FC<{ children: ComponentChildren, theme: string, onClick?: () => void }> = ({ theme, children, onClick }) => {
   return (
-    <button type="button" onClick={onClick} className="liff-modal-plugin_button" style={{
+    <button type="button" onClick={onClick} className="L-ModalPlugin_button" style={{
       background: theme === 'cancel' ? '#fff' : '#19B602',
       color: theme === 'cancel' ? '#19B602' : '#fff',
     }}>{children}</button>
   )
 }
 
-const ModalHeading: React.FC<{ children: ComponentChildren }> = ({ children }) => (
-  <h2 id="liff-modal-plugin_heading">
-    {children}
-  </h2>
-)
-
-const ModalBackGround: React.FC<{ onClick: () => void }> = ({ onClick }) => (
-  <div id="liff-modal-plugin_background" onClick={onClick} />
-)
-
 const ModalPreview: React.FC<{ previewUrl: string }> = ({ previewUrl }) => (
-  <div id="liff-modal-plugin_previewWrapper">
-    <div id="liff-modal-plugin_previewBody" style={{
+  <div id="L-ModalPlugin_previewWrapper">
+    <div id="L-ModalPlugin_previewBody" style={{
       backgroundImage: `url(${previewUrl})`
     }} />
   </div>
