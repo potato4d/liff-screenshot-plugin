@@ -10,7 +10,7 @@ export type TextDictionary = {
 
 export type PluginState = { modal: { isOpened: boolean } };
 
-export type captureWithModalOptions = {
+export type CaptureWithModalOptions = {
   format?: SupportFormat;
   dictionary?: Partial<TextDictionary>;
 };
@@ -26,7 +26,7 @@ type SSPlugin = {
   capture: () => Promise<Blob>;
   captureWithModal: <T extends SupportFormat>(
     format: T,
-    option?: captureWithModalOptions,
+    option?: CaptureWithModalOptions,
   ) => Promise<{ feedback?: string; data: CaptureReturn<T> }>;
   hideModal: () => Promise<void>;
 };

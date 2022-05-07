@@ -4,21 +4,15 @@
 
 ## Installation
 
-### NPM
+### Use via Node.js 
+
+Like other packages, it can be installed via NPM.
 
 ```terminal
-$ yarn add liff-screenshot-plugin # or npm i liff-screenshot-plugin
+$ npm i liff-screeenshot-plugin # or yarn add liff-screenshot-plugin
 ```
 
-### Browser
-
-Coming soon...
-
-## Usage
-
-### Package activation
-
-import package
+Also, since @line/liff is provided by NPM, after installing it together, simply do liff.use to complete the installation.
 
 ```ts
 import liff from '@line/liff'
@@ -29,17 +23,63 @@ import LIFFSSPlugin from 'liff-screenshot-plugin'
 liff.use(LIFFSSPlugin)
 ```
 
-### キャプチャモードでの利用
+## Use via browser
 
-### UIモードでの利用
+coming soon
+
+## Usage
+
+### Use as capture mode
+
+[![Image from Gyazo](https://i.gyazo.com/26f8deca6b7a6924aa7ad47bf4ae9899.png)](https://gyazo.com/26f8deca6b7a6924aa7ad47bf4ae9899)
+
+### Use as modal mode
+
+[![Image from Gyazo](https://i.gyazo.com/c6249be9205e6f5199cb49881a3499ff.png)](https://gyazo.com/c6249be9205e6f5199cb49881a3499ff)
 
 ## API
 
+### capture
+
+- Argument: `capture('blob')`
+- Return: `Promise<Blob>`
+
+Take a screenshot. Currently only the Blob format is supported; PNG support is planned for the future.
+
 ### captureWithModal
+
+- Argument: `captureWithModal('blob', option?: CaptureWithModalOptions)`
+- Return: `Promise<{ feedback?: string, data: Blob }>`
+
+Display a dedicated modal and capture screenshots with user feedback.
+
+The final result is feedback in string format and the Blob's data.
+
+#### CaptureWithModalOptions
+
+Mainly options exist for i18n. These are all optional.
+
+```ts
+type TextDictionary = {
+  title: string;
+  placeholder: string;
+  note: string;
+  cancelText: string;
+  submitText: string;
+};
+
+type CaptureWithModalOptions = {
+  format?: SupportFormat;
+  dictionary?: Partial<TextDictionary>;
+};
+```
 
 ### hideModal
 
-### capture
+- Argument: `hideModal()`
+- Return: `void`
+
+Interrupts the processing of the displayed modal and hides it.
 
 ## LICENCE
 

@@ -2,7 +2,7 @@ import { render } from "preact";
 import { toBlob } from "html-to-image";
 import { ReportModal } from "../components/ReportModal";
 import * as constants from "../utils/constants";
-import type { PluginState, captureWithModalOptions, SupportFormat } from "../types";
+import type { PluginState, CaptureWithModalOptions, SupportFormat } from "../types";
 
 const pluginState: PluginState = { modal: { isOpened: false } };
 
@@ -14,7 +14,7 @@ const LIFFScreenShotPlugin = {
   },
   async captureWithModal(
     format: SupportFormat,
-    captureWithModalOptions?: captureWithModalOptions,
+    captureWithModalOptions?: CaptureWithModalOptions,
   ) {
     const opt = captureWithModalOptions || { dictionary: null };
     return new Promise((resolve) => {
@@ -49,7 +49,7 @@ const LIFFScreenShotPlugin = {
       capture: (format?: SupportFormat) => this.capture(format || "blob"),
       captureWithModal: (
         format: SupportFormat,
-        captureWithModalOptions?: captureWithModalOptions,
+        captureWithModalOptions?: CaptureWithModalOptions,
       ) => this.captureWithModal(format || "blob", captureWithModalOptions),
       hideModal: () => this.hideModal(),
     };
