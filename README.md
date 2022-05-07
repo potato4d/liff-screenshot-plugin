@@ -1,6 +1,6 @@
 # LIFF ScreenShot Plugin
 
-[![npm version](https://badge.fury.io/js/liff-screenshot-plugin.svg)](https://badge.fury.io/js/liff-screenshot-plugin) ![master](https://github.com/potato4d/liff-screenshot-plugin/actions/workflows/build.yml/badge.svg?branch=master)
+[![npm version](https://badge.fury.io/js/liff-screenshot-plugin.svg)](https://badge.fury.io/js/liff-screenshot-plugin) ![master](https://github.com/potato4d/liff-screenshot-plugin/actions/workflows/build.yml/badge.svg?branch=master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 > ScreenShot plugin for LIFF
