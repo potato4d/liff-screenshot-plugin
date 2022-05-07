@@ -1,22 +1,10 @@
 import ReactDOM from 'react-dom/client'
 import { toBlob, toPng } from 'html-to-image'
-import { ReportModal, TextDictionary } from '../components/ReportModal'
+import { ReportModal } from '../components/ReportModal'
 import * as constants from '../utils/constants'
-import { SupportFormat } from '../types/types'
+import { PluginState, ShowModalOptions, SupportFormat } from '../types/types'
 
-export type ShowModalOptions = {
-  format?: SupportFormat,
-  dictionary?: Partial<TextDictionary>
-}
-
-type State = {
-  modal: {
-    reactRoot: ReactDOM.Root | null
-    isOpened: boolean
-  }
-}
-
-const pluginState: State = {
+const pluginState: PluginState = {
   modal: {
     reactRoot: null,
     isOpened: false,

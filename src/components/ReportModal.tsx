@@ -1,14 +1,6 @@
 import liff from '@line/liff'
 import React, { ReactNode, useCallback, useEffect, useState } from 'react'
-import { SupportFormat } from '../types/types'
-
-export type TextDictionary = {
-  title: string,
-  placeholder: string,
-  note: string
-  cancelText: string
-  submitText: string
-}
+import { SupportFormat, TextDictionary } from '../types/types'
 
 const defaultTextDictionary: TextDictionary = {
   title: 'フィードバックを送信',
