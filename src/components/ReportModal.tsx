@@ -19,12 +19,15 @@ const defaultTextDictionary: TextDictionary = {
 } as const
 
 export const ReportModal: React.FC<{ format: SupportFormat, dicionary?: Partial<TextDictionary>, callback: (result: string | Blob) => void }> = ({ format, dicionary, callback }) => {
+  const [previewBlob, setPreviewBlob] = useState<Blob>();
   const [previewUrl, setPreviewUrl] = useState('')
   const textDictionary = {...defaultTextDictionary, ...(dicionary || {})} as const
 
   useEffect(() => {
-    liff.$SS.capture('png')
-    .then((url: string) => {
+    liff.$SS.capture('blob')
+    .then((blob: Blob) => {
+      const url = URL.createObjectURL(blob)
+      setPreviewBlob(blob)
       setPreviewUrl(url)
     })
     .catch((err: Error) => {
@@ -37,14 +40,10 @@ export const ReportModal: React.FC<{ format: SupportFormat, dicionary?: Partial<
   }, [])
 
   const handleClickSubmit = useCallback(() => {
-    liff.$SS.capture(format)
-    .then((result) => {
-      callback(result)
-    })
-    .catch((err: Error) => {
-      console.log(err)
-    })
-  }, [])
+    if (previewBlob) {
+      callback(previewBlob)
+    }
+  }, [previewBlob, callback])
 
   if (!previewUrl) {
     return (

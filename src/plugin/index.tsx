@@ -25,16 +25,13 @@ const pluginState: State = {
 
 const LIFFScreenShotPlugin = {
   name: 'SS',
-  async capture(format: string) {
-    if (format === 'blob') {
-      const blob = toBlob(document.querySelector('body')!)
-      return blob
-    }
+  async capture(format?: SupportFormat) {
     if (format === 'png') {
       const png = toPng(document.querySelector('body')!)
       return png
     }
-    return ''
+    const blob = toBlob(document.querySelector('body')!)
+    return blob
   },
   async showModal(format: SupportFormat, showModalOptions?: ShowModalOptions) {
     const opt = showModalOptions || { dictionary: null }
@@ -63,8 +60,8 @@ const LIFFScreenShotPlugin = {
   },
   install() {
     return {
-      capture: (format: string) => this.capture(format),
-      showModal: (format?: SupportFormat, showModalOptions?: ShowModalOptions) => this.showModal(format || 'png', showModalOptions),
+      capture: (format?: SupportFormat) => this.capture(format || 'blob'),
+      showModal: (format?: SupportFormat, showModalOptions?: ShowModalOptions) => this.showModal(format || 'blob', showModalOptions),
       hideModal: () => this.hideModal(),
     }
   }
