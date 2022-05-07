@@ -1,6 +1,13 @@
 import liff from '@line/liff'
 import { useState } from 'preact/compat'
 import logo from './logo.svg'
+import { initializeApp } from 'firebase/app'
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
+initializeApp({
+  storageBucket: `${process.env.VITE_BUCKET_NAME}`
+})
+const storage = getStorage();
 
 const App: React.FC = () => {
   const [urlList, setUrlList] = useState<string[]>([]);
@@ -9,6 +16,9 @@ const App: React.FC = () => {
     liff.$SS.capture()
     .then((result) => {
       setUrlList((prev) => [...prev, URL.createObjectURL(result)])
+      const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`
+      const ssRef = ref(storage, `ss/${name}`);
+      uploadBytes(ssRef, result)
     })
   }
 
@@ -16,6 +26,9 @@ const App: React.FC = () => {
     liff.$SS.showModal('blob')
     .then((result) => {
       setUrlList((prev) => [...prev, URL.createObjectURL(result)])
+      const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`
+      const ssRef = ref(storage, `ss/${name}`);
+      uploadBytes(ssRef, result)
     })
   }
 
@@ -31,6 +44,9 @@ const App: React.FC = () => {
     })
     .then((result) => {
       setUrlList((prev) => [...prev, URL.createObjectURL(result)])
+      const name = `${~~(Math.random() * 100)}-${new Date().getTime()}.png`
+      const ssRef = ref(storage, `ss/${name}`);
+      uploadBytes(ssRef, result)
     })
   }
 

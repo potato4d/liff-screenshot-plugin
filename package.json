@@ -7,8 +7,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.86.0",
+    "@aws-sdk/lib-storage": "^3.86.0",
     "@line/liff": "^2.19.1",
     "@preact/preset-vite": "^2.1.5",
+    "aws-sdk": "^2.1130.0",
+    "firebase": "^9.8.0",
     "html-to-image": "^1.9.0",
     "preact": "^10.7.2",
     "terser": "^5.13.1",
