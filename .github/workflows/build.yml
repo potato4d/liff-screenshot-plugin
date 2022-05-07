@@ -14,3 +14,4 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: yarn terser ./dist/index.es.js -c toplevel,ecma=2020 --mangle -o ./dist/index.es.min.js
+      - run: yarn tsc -p ./tsconfig.types.json
