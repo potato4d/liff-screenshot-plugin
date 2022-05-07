@@ -22,6 +22,7 @@ h2 {
   position: sticky;
   top: 0;
   width: 100%;
+  font-family: Menlo;
 }
 
 .App {

@@ -53,7 +53,7 @@ const App: React.FC = () => {
         </header>
       </div>
       <div className="side">
-        <h2>Screen Shot</h2>
+        <h2>ScreenShot</h2>
         <ul>
           {
             urlList.map((url) => (

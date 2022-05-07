@@ -1,5 +1,5 @@
 import liff from '@line/liff'
-import React, { ReactNode, useCallback, useEffect, useState } from 'react'
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { SupportFormat, TextDictionary } from '../types/types'
 
 const defaultTextDictionary: TextDictionary = {
@@ -13,14 +13,22 @@ const defaultTextDictionary: TextDictionary = {
 export const ReportModal: React.FC<{ format: SupportFormat, dicionary?: Partial<TextDictionary>, callback: (result: string | Blob) => void }> = ({ format, dicionary, callback }) => {
   const [previewBlob, setPreviewBlob] = useState<Blob>();
   const [previewUrl, setPreviewUrl] = useState('')
+  const initializedRef = useRef(false);
   const textDictionary = {...defaultTextDictionary, ...(dicionary || {})} as const
 
   useEffect(() => {
+    if (initializedRef.current) {
+      return
+    }
     liff.$SS.capture()
     .then((blob: Blob) => {
+      if (initializedRef.current) {
+        return
+      }
       const url = URL.createObjectURL(blob)
       setPreviewBlob(blob)
       setPreviewUrl(url)
+      initializedRef.current = true
     })
     .catch((err: Error) => {
       console.log(err)
