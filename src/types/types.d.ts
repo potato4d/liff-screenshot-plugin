@@ -1,11 +1,12 @@
 import liff from '@line/liff';
+import { ShowModalOptions } from '../plugin';
 
-type Format = 'png' | 'blob'
+export type SupportFormat = 'png' | 'blob'
 type CaptureReturn<T> = T extends 'png' ? string : T extends 'blob' ? Blob : never;
 
 type SSPlugin = {
-  capture: <T extends Format>(format: T) => Promise<CaptureReturn<T>>
-  showModal: () => Promise<void>
+  capture: <T extends SupportFormat>(format: T) => Promise<CaptureReturn<T>>
+  showModal: <T extends SupportFormat>(format?: T, option?: ShowModalOptions) => Promise<CaptureReturn<T>>
   hideModal: () => Promise<void>
 }
 

@@ -83,6 +83,7 @@
   cursor: pointer;
   font-size: 14px;
   padding: 4px 8px;
+  height: 28px;
   border-radius: 2px;
   border: 0
 }

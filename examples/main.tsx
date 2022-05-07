@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import '../styles/index.css'
 import liff from '@line/liff'
 import LIFFScreenShotPlugin from '../src/plugin'
 

@@ -1,7 +1,13 @@
 import ReactDOM from 'react-dom/client'
 import { toBlob, toPng } from 'html-to-image'
-import { ReportModal } from '../components/ReportModal'
+import { ReportModal, TextDictionary } from '../components/ReportModal'
 import * as constants from '../utils/constants'
+import { SupportFormat } from '../types/types'
+
+export type ShowModalOptions = {
+  format?: SupportFormat,
+  dictionary?: Partial<TextDictionary>
+}
 
 type State = {
   modal: {
@@ -30,7 +36,8 @@ const LIFFScreenShotPlugin = {
     }
     return ''
   },
-  async showModal() {
+  async showModal(format: SupportFormat, showModalOptions?: ShowModalOptions) {
+    const opt = showModalOptions || { dictionary: null }
     return new Promise((resolve) => {
       if (pluginState.modal.isOpened) {
         throw new Error('')
@@ -45,7 +52,7 @@ const LIFFScreenShotPlugin = {
       document.body.append(modalRoot)
       pluginState.modal.reactRoot = ReactDOM.createRoot(document.getElementById(constants.MODAL_ROOT_ID)!)
       pluginState.modal.reactRoot.render(
-        <ReportModal callback={callback} />
+        <ReportModal dicionary={opt.dictionary || {}} format={format} callback={callback} />
       )
     })
   },
@@ -57,7 +64,7 @@ const LIFFScreenShotPlugin = {
   install() {
     return {
       capture: (format: string) => this.capture(format),
-      showModal: () => this.showModal(),
+      showModal: (format?: SupportFormat, showModalOptions?: ShowModalOptions) => this.showModal(format || 'png', showModalOptions),
       hideModal: () => this.hideModal(),
     }
   }
