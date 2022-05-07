@@ -6,6 +6,18 @@ Since the LIFF plugin system was released in April 2022, I developed and release
 
 ## Motivation for Development
 
+In the development of applications for smartphone browsers (hereafter referred to as "mobile applications"), different devices display and behave differently, and bugs of various sizes can occur. In particular, device-dependent bugs often change behavior depending on the OS type and version, and it is not uncommon to find out the details of such bugs after receiving FBs from users.
+
+In addition, since mobile applications express many functions in a small UI, it is not always possible to say that the intentions of the creators and developers are conveyed correctly to the end users.
+
+In fact, I sometimes develop applications that run on LINE's In-App Browser, including non-LIFF environments, and there are many cases where troubleshooting inevitably takes time.
+
+In such cases, if we have a screenshot of the actual screen, we can work on solving the problem much faster. And if the screenshot is of the current state of the application, rather than of the privacy of the OS, we should be able to use it easily without any trouble.
+
+We have created and released liff-screenshot-plugin as a solution that solves such problems and satisfies the requirements for the difficult-to-handle part of screenshots.
+
+The internal structure of liff-screenshot-plugin is just to save DOM as it is via Canvas as an image, and it can be used as a simple screenshot system without any external communication by just doing liff.use.
+
 ## What the plug-in can do
 
 Two major situations are available, each of which is introduced below.
