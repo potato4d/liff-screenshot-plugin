@@ -1,5 +1,4 @@
 import liff from '@line/liff';
-import { ShowModalOptions } from '../plugin';
 
 export type TextDictionary = {
   title: string,
@@ -11,7 +10,6 @@ export type TextDictionary = {
 
 export type PluginState = {
   modal: {
-    reactRoot: ReactDOM.Root | null
     isOpened: boolean
   }
 }

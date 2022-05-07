@@ -2,11 +2,10 @@ import { render } from 'preact'
 import { toBlob } from 'html-to-image'
 import { ReportModal } from '../components/ReportModal'
 import * as constants from '../utils/constants'
-import { PluginState, ShowModalOptions, SupportFormat } from '../types'
+import type { PluginState, ShowModalOptions, SupportFormat } from '../types'
 
 const pluginState: PluginState = {
   modal: {
-    reactRoot: null,
     isOpened: false,
   }
 }
@@ -39,7 +38,6 @@ const LIFFScreenShotPlugin = {
   },
   hideModal() {
     document.getElementById(constants.MODAL_ROOT_ID)!.remove()
-    pluginState.modal.reactRoot?.unmount()
     pluginState.modal.isOpened = false
   },
   install() {
