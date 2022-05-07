@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import { toBlob, toPng } from 'html-to-image'
+import { toBlob } from 'html-to-image'
 import { ReportModal } from '../components/ReportModal'
 import * as constants from '../utils/constants'
 import { PluginState, ShowModalOptions, SupportFormat } from '../types/types'
