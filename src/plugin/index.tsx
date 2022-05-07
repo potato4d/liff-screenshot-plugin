@@ -35,7 +35,7 @@ const LIFFScreenShotPlugin = {
       if (pluginState.modal.isOpened) {
         throw new Error('')
       }
-      const callback = (result: string) => {
+      const callback = (result: string | Blob) => {
         this.hideModal()
         resolve(result)
       }

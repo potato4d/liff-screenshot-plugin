@@ -1,7 +1,7 @@
 import liff from '@line/liff'
 import React, { ReactNode, useCallback, useEffect, useState } from 'react'
 
-export const ReportModal: React.FC<{ callback: (result: string) => void }> = ({ callback }) => {
+export const ReportModal: React.FC<{ callback: (result: string | Blob) => void }> = ({ callback }) => {
   const [previewUrl, setPreviewUrl] = useState('')
 
   useEffect(() => {
@@ -9,7 +9,7 @@ export const ReportModal: React.FC<{ callback: (result: string) => void }> = ({ 
     .then((url: string) => {
       setPreviewUrl(url)
     })
-    .catch((err: any) => {
+    .catch((err: Error) => {
       console.log(err)
     })
   }, [])
@@ -20,10 +20,10 @@ export const ReportModal: React.FC<{ callback: (result: string) => void }> = ({ 
 
   const handleClickSubmit = useCallback(() => {
     liff.$SS.capture('blob')
-    .then((url: string) => {
-      callback(url)
+    .then((blob: Blob) => {
+      callback(blob)
     })
-    .catch((err: any) => {
+    .catch((err: Error) => {
       console.log(err)
     })
   }, [])

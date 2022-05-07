@@ -7,14 +7,14 @@ function App() {
 
   const handleClickCapture = () => {
     liff.$SS.capture('blob')
-    .then((result: any) => {
+    .then((result) => {
       console.log(result)
     })
   }
 
   const handleClickShowModal = () => {
     liff.$SS.showModal()
-    .then((result: any) => {
+    .then((result) => {
       console.log(result)
     })
   }
