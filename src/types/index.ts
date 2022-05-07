@@ -1,5 +1,3 @@
-import liff from "@line/liff";
-
 export type TextDictionary = {
   title: string;
   placeholder: string;
