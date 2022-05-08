@@ -1,6 +1,6 @@
 {
   "name": "liff-screenshot-plugin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "exports": {
     ".": "./dist/index.es.js",
     "./styles/index.css": "./styles/index.css"
