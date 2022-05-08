@@ -4,7 +4,7 @@ import type { ComponentChildren } from "preact";
 import type { FC } from "preact/compat";
 import type { SupportFormat, TextDictionary } from "../types";
 
-import { useEffect, useRef, useState } from "preact/compat";
+import { useEffect, useRef, useState, useCallback } from "preact/compat";
 
 const defaultTextDictionary: TextDictionary = {
   title: "フィードバックを送信",
@@ -24,9 +24,22 @@ export const ReportModal: FC<
   const [previewBlob, setBlob] = useState<Blob>();
   const [previewUrl, setUrl] = useState("");
   const [feedback, setFeedback] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const isInit = useRef(false);
   const dic = { ...defaultTextDictionary, ...(dicionary || {}) } as const;
 
+  // Auto Focus
+  useEffect(
+    () => {
+      if (!textareaRef.current) {
+        return;
+      }
+      textareaRef.current.focus();
+    },
+    [textareaRef, previewUrl],
+  );
+
+  // Capture
   useEffect(
     () => {
       if (isInit.current) {
@@ -54,9 +67,12 @@ export const ReportModal: FC<
     [],
   );
 
-  const handleClickCancel = () => {
-    liff.$SS.hideModal();
-  };
+  const handleClickCancel = useCallback(
+    () => {
+      liff.$SS.hideModal();
+    },
+    [],
+  );
 
   const handleClickSubmit = () => {
     if (previewBlob) {
@@ -69,12 +85,14 @@ export const ReportModal: FC<
   }
 
   return (
-    <div id="L-ModalPlugin-root">
+    <div id="L-ModalPlugin-root" role="dialog" aria-modal
+    aria-labelledby="L-ModalPlugin_heading"
+    aria-describedby="L-ModalPlugin_body">
       <div id="L-ModalPlugin_body">
         <h2 id="L-ModalPlugin_heading">
           {dic.title}
           </h2>
-        <textarea placeholder={dic.placeholder} onInput={(e) => setFeedback(e.currentTarget.value)} />
+        <textarea placeholder={dic.placeholder} ref={textareaRef} onInput={(e) => setFeedback(e.currentTarget.value)} />
         <div id="L-ModalPlugin_previewWrapper">
           <div id="L-ModalPlugin_previewBody" style={{
             backgroundImage: `url(${previewUrl})`

@@ -29,6 +29,11 @@ const LIFFScreenShotPlugin = {
       modalRoot.id = constants.MODAL_ROOT_ID;
       (modalRoot as any).style =
         "width: 100%; height: 100%;z-index: 500000;position: fixed;left:0;top:0";
+      Array
+        .from(document.querySelectorAll("body > *"))
+        .forEach((el) => {
+          el.setAttribute("aria-hidden", "");
+        });
       document.body.append(modalRoot);
       render(
         <ReportModal
@@ -41,6 +46,11 @@ const LIFFScreenShotPlugin = {
     });
   },
   hideModal() {
+    Array
+      .from(document.querySelectorAll("body > *"))
+      .forEach((el) => {
+        el.removeAttribute("aria-hidden");
+      });
     document.getElementById(constants.MODAL_ROOT_ID)!.remove();
     pluginState.modal.isOpened = false;
   },
